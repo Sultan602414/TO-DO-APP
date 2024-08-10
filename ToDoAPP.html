@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To DO APP</title>
+<link rel="stylesheet" href="todo.css">
+</head>
+<body>
+    <div class="headings">
+        <h1>TO DO LIST</h1>
+    </div>
+    <div>
+        <input type="text" id="inp" placeholder="Enter your tasks" >
+        <button class="btn add" id="btn">ADD</button>
+    </div>
+    <ul id="ul">
+     
+    </ul>
+
+    <script>
+        let inp=document.querySelector("#inp")
+        let btn=document.querySelector("#btn")
+        let list=document.querySelector("#ul")
+
+
+
+        inp.addEventListener("keypress", function(event){
+           if (event.keyCode === 13) {
+            if(inp.value==""){
+                alert("TASK IS EMPTY")
+            }
+            else{
+                let li=document.createElement("li")
+                list.appendChild(li)
+
+                let chkbox=document.createElement("input")
+                chkbox.setAttribute('type','checkbox')
+                li.appendChild(chkbox)
+
+                chkbox.addEventListener('click',()=>{
+                    li.style.backgroundColor="lightblue"
+                    edit.disabled = true
+                })
+
+                let span=document.createElement("span")
+                span.innerText=inp.value
+                li.appendChild(span)
+                inp.value=""
+
+                let del=document.createElement("button")
+                let edit=document.createElement("button")
+                
+                edit.classList.add("edit")
+                li.appendChild(edit)
+                del.classList.add("remove")
+                li.appendChild(del)
+                edit.addEventListener('click',()=>{
+                    inp.value=span.innerText
+                    edit.parentElement.remove()
+                })
+                del.addEventListener('click',()=>{
+                del.parentElement.remove()
+                
+                })
+            }
+           }
+        });
+
+        btn.addEventListener('click',()=>{
+            if(inp.value==""){
+                alert("TASK IS EMPTY")
+            }
+            else{
+                let li=document.createElement("li")
+                list.appendChild(li)
+
+                let chkbox=document.createElement("input")
+                chkbox.setAttribute('type','checkbox')
+                li.appendChild(chkbox)
+
+                chkbox.addEventListener('click',()=>{
+                    li.style.backgroundColor="lightblue"
+                    edit.disabled = true
+                })
+
+                let span=document.createElement("span")
+                span.innerText=inp.value
+                li.appendChild(span)
+                inp.value=""
+
+                let del=document.createElement("button")
+                let edit=document.createElement("button")
+                
+                edit.classList.add("edit")
+                li.appendChild(edit)
+                del.classList.add("remove")
+                li.appendChild(del)
+                edit.addEventListener('click',()=>{
+                    inp.value=span.innerText
+                    edit.parentElement.remove()
+                })
+                del.addEventListener('click',()=>{
+                del.parentElement.remove()
+                
+                })
+            }
+        })
+        
+    </script>
+</body>
+</html>
